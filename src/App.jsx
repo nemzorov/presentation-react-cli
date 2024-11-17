@@ -1,12 +1,9 @@
-import ClassComponent from './components/ClassComponent '
-import FunctionComponent from './components/FunctionComponent'
+import ChildComponent from './components/ChildrenComponent'
+import ParentComponent from './components/ParentComponent'
 
 function App() {
   return (
-    <div>
-      <ClassComponent name="Классовый" />
-      <FunctionComponent name="Функциональынй" />
-    </div>
+    <ParentComponent children={<ChildComponent name="Василий" />} />
   )
 }
 
