@@ -1,9 +1,8 @@
-import ChildComponent from './components/ChildrenComponent'
-import ParentComponent from './components/ParentComponent'
+import MyComponent from './components/MyComponent'
 
 function App() {
   return (
-    <ParentComponent children={<ChildComponent name="Василий" />} />
+    <MyComponent />
   )
 }
 
