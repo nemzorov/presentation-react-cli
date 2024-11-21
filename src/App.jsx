@@ -1,9 +1,18 @@
-import MyComponent from './components/MyComponent'
-
 function App() {
+  let count = 1;
+
+  const onIncrement = () => {
+    count++;
+  }
+
   return (
-    <MyComponent />
+    <div>
+      <input value={count} type="text" readOnly />
+
+      {/* Важно! Передаем ф-ию именно через callback */}
+      <button onClick={() => onIncrement()}>increment</button>
+    </div>
   )
 }
 
-export default App
+export default App;
