@@ -1,20 +1,24 @@
 import { useState } from 'react';
 
 function App() {
-  // let count = 1;
+  const items = ['Иван', 'Василий', 'Петр']; // условные данные из вне
 
-  const [count, setCount] = useState(0);
+  const [data, setData] = useState(items);
+  const [value, setValue] = useState('');
 
-  const onIncrement = () => {
-    // count++;
-    setCount(prevState => ++prevState);
+  const addName = (name) => {
+    // if (!name) return;
+    setData(prevState => [...prevState, name]);
+    // setValue(''); // занулить value
   }
 
   return (
     <div>
-      <input value={count} type="text" readOnly />
-
-      <button onClick={onIncrement}>increment</button>
+      <ul>
+        {data.map((name, index) => <li key={index}>{name}</li>)} {/* важно указать key */}
+      </ul>
+      <input value={value} onChange={e => setValue(e.target.value)} type="text" />
+      <button onClick={() => addName(value)}>Добавить имя</button>
     </div>
   )
 }
