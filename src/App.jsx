@@ -1,16 +1,20 @@
+import { useState } from 'react';
+
 function App() {
-  let count = 1;
+  // let count = 1;
+
+  const [count, setCount] = useState(0);
 
   const onIncrement = () => {
-    count++;
+    // count++;
+    setCount(prevState => ++prevState);
   }
 
   return (
     <div>
       <input value={count} type="text" readOnly />
 
-      {/* Важно! Передаем ф-ию именно через callback */}
-      <button onClick={() => onIncrement()}>increment</button>
+      <button onClick={onIncrement}>increment</button>
     </div>
   )
 }
