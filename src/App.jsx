@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 
 function App() {
   const items = ['Иван', 'Василий', 'Петр']; // условные данные из вне
@@ -7,10 +7,19 @@ function App() {
   const [value, setValue] = useState('');
 
   const addName = (name) => {
-    // if (!name) return;
+    if (!name) return;
     setData(prevState => [...prevState, name]);
-    // setValue(''); // занулить value
+    setValue('');
   }
+
+    useEffect(() => {
+        console.log('Компонент вмонтирован');
+    }, []);
+
+    useEffect(() => {
+        console.log('Компонент обновлен');
+    }, [data, value]);
+
 
   return (
     <div>
