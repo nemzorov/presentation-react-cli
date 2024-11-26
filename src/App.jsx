@@ -1,33 +1,26 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
+import Todo from './Todo';
 
 function App() {
-  const items = ['Иван', 'Василий', 'Петр']; // условные данные из вне
+  const [todos, setTodos] = useState([]);
 
-  const [data, setData] = useState(items);
-  const [value, setValue] = useState('');
-
-  const addName = (name) => {
-    if (!name) return;
-    setData(prevState => [...prevState, name]);
-    setValue('');
-  }
-
-    useEffect(() => {
-        console.log('Компонент вмонтирован');
-    }, []);
-
-    useEffect(() => {
-        console.log('Компонент обновлен');
-    }, [data, value]);
+  useEffect(() => {
+    fetch('https://dummyjson.com/todos')
+      .then(res => res.json())
+      .then(data => setTodos(data.todos))
+  }, [])
 
 
   return (
     <div>
       <ul>
-        {data.map((name, index) => <li key={index}>{name}</li>)} {/* важно указать key */}
+        {todos.map((item, index) => (
+          <li key={index}>
+            <Todo todo={item.todo} />
+          </li>
+        ))}
       </ul>
-      <input value={value} onChange={e => setValue(e.target.value)} type="text" />
-      <button onClick={() => addName(value)}>Добавить имя</button>
+
     </div>
   )
 }

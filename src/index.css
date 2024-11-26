@@ -58,6 +58,15 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  margin: 0;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -71,4 +80,20 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.todo div {
+  flex-grow: 1;
+  margin-right: 20px;
 }
