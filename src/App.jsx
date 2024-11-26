@@ -18,6 +18,15 @@ function App() {
     setLoading(false);
   }, [todos])
 
+  const onComplete = (id, completed) => {
+    setTodos(todos.map(item => item.id === id ? { ...item, completed } : item));
+  }
+
+  const onDelete = (id) => {
+    confirm('Вы действительно хотите удалить?') &&
+      setTodos(todos.filter(item => item.id !== id));
+  }
+
 
   return (
     <div>
@@ -27,7 +36,7 @@ function App() {
         <ul>
           {todos.map((item, index) => (
             <li key={index}>
-              <Todo todo={item.todo} />
+              <Todo id={item.id} todo={item.todo} completed={item.completed} onDelete={onDelete} onComplete={onComplete} />
             </li>
           ))}
         </ul>
